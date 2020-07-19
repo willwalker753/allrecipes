@@ -1,0 +1,61 @@
+#recipe {
+    margin-top: 40px;
+}
+#recipe > h4 {
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-bottom: 14px;
+}
+#recipe > ul {
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+}
+#backToResults {
+    color: rgb(255, 126, 6);
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 10px;
+}
+#backToResults:hover {
+    color: darkblue;
+}
+#recipeH2 {
+    color: white;
+    text-align: center;
+}
+#recipeTop {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#recipeAddToFavorites {
+    border-radius: 7px;
+    border-color: black;
+    border-width: 1px;
+    color: white;
+    background-color: rgb(255, 126, 6);
+    margin-right: 10px;
+}
+#recipeAddToFavorites:hover {
+    background-color: darkblue;
+}
+#recipeImg {
+    width:100vw;
+}
+#recipeInstructions {
+    color: white;
+    width: 90%;
+    margin-left: 14px;
+}
+#recipeSource {
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 14px;
+    color: rgb(255, 126, 6);
+}
+#recipeSource:hover {
+    color: darkblue;
+}

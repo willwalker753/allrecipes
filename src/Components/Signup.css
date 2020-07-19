@@ -1,0 +1,44 @@
+#signUpForm {
+	display: flex;
+	flex-direction: column;
+	width:50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#signUpForm > input {
+	margin-top: 8px;
+	border-radius: 6px;
+	border-color: black;
+	border-width: 1px;
+}
+#submitSignUp {
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(255, 126, 6);
+	color: white;
+}
+#submitSignUp:hover {
+	background-color: rgb(17, 17, 168);;
+}
+#signUpH2 {
+	text-align: center;
+}
+#signUpH2 > a {
+	text-decoration: none;
+	color: rgb(255, 126, 6);
+}
+#signUpP {
+	text-align: center;
+	color: white
+}
+#signUpP > a {
+	text-decoration: none;
+	color: rgb(255, 126, 6);
+}
+#signUpP > a:hover {
+	color: darkblue;
+}
+#signUpH2 > a:hover {
+	color: darkblue;
+}

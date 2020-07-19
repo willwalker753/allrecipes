@@ -1,0 +1,44 @@
+#loginForm {
+	display: flex;
+	flex-direction: column;
+	width:50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#loginForm > input {
+	margin-top: 8px;
+	border-radius: 6px;
+	border-color: black;
+	border-width: 1px;
+}
+#submitLogin {
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgb(255, 126, 6);
+	color: white;
+}
+#submitLogin:hover {
+	background-color: rgb(17, 17, 168);;
+}
+#loginH2 {
+	text-align: center;
+}
+#loginH2 > a {
+	text-decoration: none;
+	color: rgb(255, 126, 6);
+}
+#loginP {
+	text-align: center;
+	color: white
+}
+#loginP > a {
+	text-decoration: none;
+	color: rgb(255, 126, 6);
+}
+#loginP > a:hover {
+	color: darkblue;
+}
+#loginH2 > a:hover {
+	color: darkblue;
+}

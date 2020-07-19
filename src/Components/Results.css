@@ -1,0 +1,41 @@
+#resultsSpace{
+    margin-bottom: 70px;
+}
+.resultsBox {
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 123, 0, 0.637);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+#resultsTitle { 
+    text-align: center;
+    padding-top:10px;
+    width: 90%;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration:underline;
+    text-decoration-color: rgba(255, 123, 0, 0.637);
+    color: white;
+    font-size: 18px;
+}
+#resultsP {
+    color: white;
+    margin-left: 10px;
+    width: 90%;
+    text-align: center;
+    padding-bottom: 10px;
+    margin-top: 5px;
+    text-decoration:none;
+    border-bottom: none;
+    text-decoration:underline;
+    text-decoration-color: rgba(255, 123, 0, 0.637);
+}
+#resultsImg {
+    width: 100%;
+    margin-top: 10px;
+}

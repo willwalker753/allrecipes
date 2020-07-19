@@ -1,0 +1,13 @@
+* {
+    font-family: 'Titillium Web', sans-serif;
+   
+}
+html {
+    background-image: url(./orange.jpg);
+    
+}
+body {
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.191);
+    padding-bottom: 800px;
+}

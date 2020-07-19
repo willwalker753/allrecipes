@@ -1,0 +1,56 @@
+.accountFavorites {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    background-color: rgba(255, 123, 0, 0.637);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 7px;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+}
+#accountHasFav {
+    color: white;
+}
+.accountFavorites > a > h4 {
+    padding-left:30px;
+    padding-right:30px;
+    width: 30%;
+    color:white;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 123, 0, 0.637);
+}
+.accountFavorites > a > img {
+    height: 100px;
+}
+.accountFavorites > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.accountRemoveFavorite {
+    background-color: rgba(83, 83, 83, 0.739);
+    border-radius: 0px 7px 7px 0px;
+    border-color: black;
+    border-width: 1px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.accountRemoveFavorite:hover {
+    color: rgb(216, 3, 3);
+}
+#accountLogOut {
+    margin-top: 60px;
+    background-color: rgb(255, 126, 6);
+    border-radius: 7px;
+    border-color: black;
+    border-width: 1px;
+    color: white;
+    margin-left: 10px;
+    font-size: 17px;
+}
+#accountLogOut:hover {
+    background-color: darkblue;
+}

@@ -1,0 +1,41 @@
+#main {
+    text-align: center;
+    color: rgb(255, 126, 6);
+}
+#main > header > h2{ 
+    padding: 10px;
+    margin-top: 15px;
+}
+#homeAboutTxt {
+    font-size: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px;
+}
+#searchBar {
+    height: 30px;
+    width: 50%;
+    border-width: 1px;
+    border-color: black;
+    border-right: none;
+    border-radius: 15px 0px 0px 15px;
+    padding-left: 13px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 14px;
+    outline:none;
+}
+#searchBar::placeholder {
+    color: rgb(167, 167, 167);
+    font-style: italic;
+}
+#searchBarButton {
+    height: 33px;
+    width: 40px;
+    border-width: 1px;
+    border-color: black;
+    border-left: none;
+    background-color: rgb(255, 126, 6);
+    border-radius: 0px 15px 15px 0px;
+    outline:none;
+}
