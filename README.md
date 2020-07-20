@@ -20,7 +20,7 @@ over 360,000 recipes. The backend API repo can be found <a href='https://github.
 <br>
 <h4>Account Page</h4>
 <img src="https://i.gyazo.com/11632f43aa4ad6e5f19e3bc51d08d704.jpg" width="400" ></img>
-<br>
+
 
 <hr>
 
@@ -42,4 +42,3 @@ over 360,000 recipes. The backend API repo can be found <a href='https://github.
 <li>Heroku</li>
 <li>Vercel</li>
 </ul>
-<br>
