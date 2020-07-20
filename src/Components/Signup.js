@@ -5,23 +5,26 @@ import axios from 'axios'
 
 class Signup extends Component {
     constructor(props) {
-        super(props)
-    
+        super(props)  
         this.state = {
              username: '',
              password: '',
-             redirect: false
+             redirect: false,
+             errorMessage: ''
         }
-    }
-    
+    }  
     changeHandler = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
     submitHandler = e => {
         e.preventDefault()
-        console.log(this.state);
-        axios.post('https://allrecipes-api.herokuapp.com/register',this.state)
+        if((this.state.username === '')||(this.state.password === '')) {
+            this.setState({
+                errorMessage: 'Please enter a username and password'
+            })
+        }
+        else{
+            axios.post('https://allrecipes-api.herokuapp.com/register',this.state)
             .then(response => {
                 console.log(response)
                 if(response.status === 200){
@@ -32,8 +35,8 @@ class Signup extends Component {
                 }
             })
             .catch(error => {
-                console.log(error)
             })
+        }
     }
 
     render() {
@@ -53,6 +56,7 @@ class Signup extends Component {
                     <input type="password" placeholder="Password" name='password' value={password} onChange={this.changeHandler}/>
                     <input type="submit" id='submitSignUp' value="Sign Up"/>
                 </form>
+                <p id='errorMessage'>{this.state.errorMessage}</p>
                 <section>
                     <p id='signUpP'>
                         Already have an account? Login 

@@ -11,8 +11,7 @@ export default function nav() {
                 <ul id='nav'>
                     <li id='navName'>Hello {username}</li>
                     <li><a href='/'>allRecipes</a></li>                   
-                    <li><a href='/account'><i id='accountIconNav' className="fas fa-user-circle"></i></a></li>
-                    
+                    <li><a href='/account'><i id='accountIconNav' className="fas fa-user-circle"></i></a></li>      
                 </ul>
             </nav>
         )

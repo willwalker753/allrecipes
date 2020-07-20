@@ -13,15 +13,12 @@ export default class Results extends Component {
           isLoaded: false,
           items: []
         };
-    }
-    
+    } 
     renderImage(){
       let imgUrl = `<img src='https://spoonacular.com/recipeImages/${this.state.items[count].image}-312x150.jpg' />`;
       count++;
       return (imgUrl)
     }
-
-
     componentDidMount() {
       let search = localStorage.getItem('search');
       let url = 'https://api.spoonacular.com/recipes/search?apiKey=' + apiKey + '&query=' + search;
@@ -51,22 +48,20 @@ export default class Results extends Component {
           return <div>Loading...</div>;
         } else {
             array = this.state.items;
-            console.log(array);
             if(array.length === 0){
-              console.log('nopenopenope');
               return <p>Your search did not return any results...<a href='/'>Back to home?</a></p>           
             }
             for(let i=0;i<array.length;i++){
                 array[i].image = 'https://spoonacular.com/recipeImages/'+array[i].id+'-312x150.jpg';
-                array[i].sourceUrl = 'http://localhost:3000/recipe/'+array[i].id;
+                array[i].sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+array[i].id;
             }
-
           return (
             <div>
               <Nav />
               <div id='resultsSpace'></div>
+              <div id='resultsFlexBox'>
               {array.map(item => (
-                <a classname='resultsBoxLink' href={item.sourceUrl}>
+                <a className='resultsBoxLink' href={item.sourceUrl}>
                   <div className='resultsBox' key={item.id}>
                       <p id='resultsTitle'>{item.title}</p>
                       <img id='resultsImg' src={item.image} alt='recipe'/>
@@ -74,6 +69,7 @@ export default class Results extends Component {
                   </div>
                 </a>
               ))}
+              </div>
             </div>
           );
         }

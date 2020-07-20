@@ -7,20 +7,16 @@ export default class home extends Component {
     constructor(props) {
         super(props);
         this.state = {value: '',searched: false};
-    
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
     handleChange(event) {
         this.setState({value: event.target.value});
     }
-
     handleSubmit(event) {
         localStorage.clear();
         localStorage.setItem('search', this.state.value);
         let search = localStorage.getItem('search');
-        console.log(search);
         this.setState({searched: true});
         event.preventDefault();
     }
@@ -42,7 +38,7 @@ export default class home extends Component {
                     </form>
                     <article>
                         <p id='homeAboutTxt'>
-                            When signed in you can add recipes to your favorites to save them for later. For a quick demo, sign in with username:demo and password:password
+                            When signed in you can add recipes to your favorites to save them for later. For a quick demo, sign in with username:demo<br></br>password:password
                         </p>
                     </article>
                 </div>

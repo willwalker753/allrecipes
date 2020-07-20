@@ -1,5 +1,5 @@
 #resultsSpace{
-    margin-bottom: 70px;
+    padding-bottom: 70px;
 }
 .resultsBox {
     width:90%;
@@ -38,4 +38,17 @@
 #resultsImg {
     width: 100%;
     margin-top: 10px;
+}
+
+@media only screen and (min-width: 700px) {
+    .resultsBox {
+        max-width: 370px;
+        height: 310px;
+    }
+    #resultsFlexBox {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
 }

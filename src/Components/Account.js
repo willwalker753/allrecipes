@@ -19,7 +19,7 @@ export default class Account extends Component {
     }
     logOut() {
         window.sessionStorage.clear();
-        window.location.replace('http://localhost:3000/');
+        window.location.replace('https://allrecipes-git-master.willwalker753.vercel.app/');
     }
     makeIdArray() {
         if(!ran){
@@ -51,7 +51,6 @@ export default class Account extends Component {
             )
     }
     async getRecipeInfo() {
-        console.log('made it inside get recipe info');
         let param = '';
         for(let i=0;i<array.length;i++) {
             if(i===0){
@@ -61,16 +60,13 @@ export default class Account extends Component {
                 param = param + ',' + array[i];
             }
         }
-        console.log(param);
         let url = 'https://api.spoonacular.com/recipes/informationBulk?ids=' + param + '&apiKey=7422ef4ed19a4d60954f75383db15c1f';
-        console.log(url);
         await axios.get(url)
             .then(response => {         
                 recipeArray = response.data;
                 recipeArray.map(item => {
-                    item.sourceUrl = 'http://localhost:3000/'+item.id;
+                    item.sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+item.id;
                 })
-                console.log(recipeArray);
                 return recipeArray;
             },
             (error) => {
@@ -93,8 +89,6 @@ export default class Account extends Component {
               this.setState({
                 items: response.data,   
               });
-              
-
             },
             (error) => {
               this.setState({
@@ -104,10 +98,7 @@ export default class Account extends Component {
             }
           )
         array = this.state.items;
-        
-        console.log(array);
-        if(array.length === 0) {
-            
+        if(array.length === 0) {           
             this.setState({
                 isLoaded: true,
                 hasFav: 'You do not have any favorites'
@@ -144,15 +135,17 @@ export default class Account extends Component {
             <Nav />
             <button id='accountLogOut' onClick={() => this.logOut()}>Log Out</button>
             <p>{this.state.hasFav}</p>
-            {recipeArray.map(item => (
-                <div className='accountFavorites' key={item.id}>
-                    <a href={item.sourceUrl} >
-                        <h4>{item.title}</h4>
-                        <img src={item.image} alt='recipe'/>
-                    </a>
-                    <button className='accountRemoveFavorite' onClick={() => this.deleteFavorite(item.id)}><i class="fas fa-trash"></i></button>
-                </div>
-            ))}
+            <div id='accountFavoritesBox'>
+                {recipeArray.map(item => (
+                    <div className='accountFavorites' key={item.id}>
+                        <a href={item.sourceUrl} >
+                            <h4>{item.title}</h4>
+                            <img src={item.image} alt='recipe'/>
+                        </a>
+                        <button className='accountRemoveFavorite' onClick={() => this.deleteFavorite(item.id)}><i className="fas fa-trash"></i></button>
+                    </div>
+                ))}
+            </div>
         </div>
         ) 
     }

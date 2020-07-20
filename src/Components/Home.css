@@ -11,10 +11,13 @@
     margin-right: auto;
     margin-left: auto;
     padding: 10px;
+    max-width: 630px;
 }
 #searchBar {
     height: 30px;
     width: 50%;
+    min-width: 140px;
+    max-width: 260px;
     border-width: 1px;
     border-color: black;
     border-right: none;
@@ -38,4 +41,14 @@
     background-color: rgb(255, 126, 6);
     border-radius: 0px 15px 15px 0px;
     outline:none;
+    color: white;
+}
+#searchBarButton:hover {
+    background-color: darkblue;
+}
+
+@media only screen and (min-width: 700px) {
+    #main > header > h2{ 
+        margin-top: 80px;
+    }
 }

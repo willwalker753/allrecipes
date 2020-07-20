@@ -18,32 +18,28 @@ export default class Recipe extends Component {
         this.addToFav = this.addToFav.bind(this);
     }
     addToFav() {
-      console.log('clicked');
       let userId = window.sessionStorage.getItem('userID');
-      console.log(userId);
       if(userId === null){
         alert('You must be signed in to add to favorites');
       }
       else {
         let recipeId = window.location.href;
-        recipeId = recipeId.replace('http://localhost:3000/recipe/','');
+        recipeId = recipeId.replace('https://allrecipes-git-master.willwalker753.vercel.app/recipe/','');
         let json = {
           'userId': userId,
           'recipeId': recipeId
         };
         axios.post('https://allrecipes-api.herokuapp.com/favorite', json)
           .then(response => {
-            console.log(response)
         })
         this.setState({
           favorites: <i className="fas fa-check"></i>
         });
       }
-      
     }
     componentDidMount() {
         let recipeId = window.location.href;
-        recipeId = recipeId.replace('http://localhost:3000/recipe/','');
+        recipeId = recipeId.replace('https://allrecipes-git-master.willwalker753.vercel.app/recipe/','');
         console.log(recipeId);
         let url = 'https://api.spoonacular.com/recipes/'+recipeId+'/information?apiKey='+apiKey;
         fetch(url)
@@ -67,9 +63,11 @@ export default class Recipe extends Component {
         const { error, isLoaded } = this.state;
         if (error) {
           return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
+        } 
+        else if (!isLoaded) {
           return <div>Loading...</div>;
-        } else {
+        } 
+        else {
             array = this.state.items;
             console.log(array);
             }

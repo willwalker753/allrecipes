@@ -5,19 +5,18 @@ import axios from 'axios'
 
 class Login extends Component {
     constructor(props) {
-        super(props)
-    
+        super(props) 
         this.state = {
              username: '',
              password: '',
-             redirect: false
+             redirect: false,
+             errorMessage: ''
         }
     }
     
     changeHandler = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
     submitHandler = e => {
         e.preventDefault()
         console.log(this.state);
@@ -32,13 +31,16 @@ class Login extends Component {
                     this.setState({ redirect: true })
                 }
                 else {
-                    alert('Incorrect username/password');
+                    this.setState({
+                        errorMessage: 'Incorrect username or password'
+                    });
                 }
             })
             .catch(error => {
-                console.log(error)
-                alert('Incorrect username/password');
-            })
+                this.setState({
+                    errorMessage: 'Incorrect username or password'
+                });
+            });
     }
 
     render() {
@@ -58,6 +60,7 @@ class Login extends Component {
                     <input type="password" placeholder="Password" name='password' value={password} onChange={this.changeHandler}/>
                     <input type="submit" id='submitLogin' value="Login"/>
                 </form>
+                <p id='errorMessage'>{this.state.errorMessage}</p>
                 <section>
                     <p id='loginP'>
                         Need an account? Sign up 

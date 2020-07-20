@@ -3,6 +3,7 @@
 	flex-direction: column;
 	width:50%;
 	margin-left: auto;
+	
 	margin-right: auto;
 }
 #loginForm > input {
@@ -10,6 +11,9 @@
 	border-radius: 6px;
 	border-color: black;
 	border-width: 1px;
+	
+	margin-left: auto;
+	margin-right: auto;
 }
 #submitLogin {
 	width: 30%;
@@ -17,12 +21,15 @@
 	margin-right: auto;
 	background-color: rgb(255, 126, 6);
 	color: white;
+	min-width: 75px;
+	max-width: 100px;
 }
 #submitLogin:hover {
 	background-color: rgb(17, 17, 168);;
 }
 #loginH2 {
 	text-align: center;
+	margin-top: 0px;
 }
 #loginH2 > a {
 	text-decoration: none;
@@ -41,4 +48,21 @@
 }
 #loginH2 > a:hover {
 	color: darkblue;
+}
+#errorMessage {
+	color: red;
+	background-color: rgba(59, 59, 59, 0.465);
+	text-align: center;
+}
+@media only screen and (min-width: 700px) {
+    #loginH2 {
+		padding-top: 200px;
+		font-size: 30px;
+	}
+	#loginP {
+		font-size: 20px;
+	}
+	#loginForm {
+		font-size: 30px;
+	}
 }

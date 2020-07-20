@@ -54,3 +54,34 @@
 #accountLogOut:hover {
     background-color: darkblue;
 }
+@media only screen and (min-width: 700px) {
+    .accountFavorites {
+        max-width: 290px;
+        margin-top: 15px;
+    }
+    .accountFavorites > a {
+        flex-direction: column;
+        align-items: center;
+    }
+    .accountFavorites > a > img {
+        height: 150px;
+        padding: 10px;
+    }
+    .accountFavorites > a > h4 {
+        padding-left:30px;
+        padding-right:30px;
+        width: 80%;
+    }
+    #accountFavoritesBox {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .accountRemoveFavorite {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
