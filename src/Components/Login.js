@@ -13,10 +13,10 @@ class Login extends Component {
              errorMessage: ''
         }
     }
-    
     changeHandler = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
+    //if the submitted username and password returns a match from the database server then sign in
     submitHandler = e => {
         e.preventDefault()
         console.log(this.state);
@@ -63,6 +63,7 @@ class Login extends Component {
                 <p id='errorMessage'>{this.state.errorMessage}</p>
                 <section>
                     <p id='loginP'>
+                        Demo account Username:demo Password:password<br />
                         Need an account? Sign up 
                         <a href="/signup"> here</a>
                     </p>

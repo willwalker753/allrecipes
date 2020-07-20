@@ -3,7 +3,7 @@ import Nav from './Nav';
 import axios from 'axios';
 import './Account.css'
 
-let array = [];
+let recipeNumArray = [];
 let recipeArray = [];
 let ran = false;
 
@@ -19,17 +19,18 @@ export default class Account extends Component {
     }
     logOut() {
         window.sessionStorage.clear();
-        window.location.replace('https://allrecipes-git-master.willwalker753.vercel.app/');
+        window.location.replace('http://localhost:3000/');
     }
+    //gets the url params ready
     makeIdArray() {
         if(!ran){
-            for(let i=0;i<array.length;i++) {
-                array[i] = Object.values(array[i]);
-                array[i] = array[i][2];
+            for(let i=0;i<recipeNumArray.length;i++) {
+                recipeNumArray[i] = Object.values(recipeNumArray[i]);
+                recipeNumArray[i] = recipeNumArray[i][2];
             }
         }
         ran = true;
-        return array;
+        return recipeNumArray;
     }
     async deleteFavorite(recipeId) {
         let userId = window.sessionStorage.getItem('userID');
@@ -50,14 +51,15 @@ export default class Account extends Component {
             }
             )
     }
+    //use the params from makeIdArray to request them from the api
     async getRecipeInfo() {
         let param = '';
-        for(let i=0;i<array.length;i++) {
+        for(let i=0;i<recipeNumArray.length;i++) {
             if(i===0){
-                param = array[i];
+                param = recipeNumArray[i];
             }
             else {
-                param = param + ',' + array[i];
+                param = param + ',' + recipeNumArray[i];
             }
         }
         let url = 'https://api.spoonacular.com/recipes/informationBulk?ids=' + param + '&apiKey=7422ef4ed19a4d60954f75383db15c1f';
@@ -65,7 +67,7 @@ export default class Account extends Component {
             .then(response => {         
                 recipeArray = response.data;
                 recipeArray.map(item => {
-                    item.sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+item.id;
+                    item.sourceUrl = 'http://localhost:3000/recipe/'+item.id;
                 })
                 return recipeArray;
             },
@@ -79,6 +81,8 @@ export default class Account extends Component {
                 isLoaded: true,  
             });              
     }
+
+    //get the user's list of favorites from the database server
     async componentDidMount() {
         let userId = window.sessionStorage.getItem('userID');
         let json = {
@@ -97,14 +101,15 @@ export default class Account extends Component {
               });
             }
           )
-        array = this.state.items;
-        if(array.length === 0) {           
+          recipeNumArray = this.state.items;
+        if(recipeNumArray.length === 0) {           
             this.setState({
                 isLoaded: true,
                 hasFav: 'You do not have any favorites'
             });       
         }
-        else if(array.length > 0) {
+        //if the user does have favorites then get the request url ready and get the data on those recipes
+        else if(recipeNumArray.length > 0) {
             this.setState({
                 hasFav: ''
             });      

@@ -16,6 +16,8 @@ class Signup extends Component {
     changeHandler = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
+
+    //if the user submits a username and password it is posted to the database server and the user is logged in
     submitHandler = e => {
         e.preventDefault()
         if((this.state.username === '')||(this.state.password === '')) {

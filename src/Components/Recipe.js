@@ -3,7 +3,7 @@ import './Recipe.css';
 import Nav from './Nav';
 import axios from 'axios';
 
-let array = [];
+let recipeArray = [];
 const apiKey = '01673e987d334c68ba50b7b73c675d42';
 
 export default class Recipe extends Component {
@@ -17,6 +17,8 @@ export default class Recipe extends Component {
         };
         this.addToFav = this.addToFav.bind(this);
     }
+
+    //if the user is signed in makes a post request to database server to save recipe id under the user's id
     addToFav() {
       let userId = window.sessionStorage.getItem('userID');
       if(userId === null){
@@ -24,7 +26,7 @@ export default class Recipe extends Component {
       }
       else {
         let recipeId = window.location.href;
-        recipeId = recipeId.replace('https://allrecipes-git-master.willwalker753.vercel.app/recipe/','');
+        recipeId = recipeId.replace('http://localhost:3000/recipe/','');
         let json = {
           'userId': userId,
           'recipeId': recipeId
@@ -37,10 +39,11 @@ export default class Recipe extends Component {
         });
       }
     }
+
+    //get the selected recipe's information from the api
     componentDidMount() {
         let recipeId = window.location.href;
-        recipeId = recipeId.replace('https://allrecipes-git-master.willwalker753.vercel.app/recipe/','');
-        console.log(recipeId);
+        recipeId = recipeId.replace('http://localhost:3000/recipe/','');
         let url = 'https://api.spoonacular.com/recipes/'+recipeId+'/information?apiKey='+apiKey;
         fetch(url)
           .then(res => res.json())
@@ -68,9 +71,8 @@ export default class Recipe extends Component {
           return <div>Loading...</div>;
         } 
         else {
-            array = this.state.items;
-            console.log(array);
-            }
+          recipeArray = this.state.items;
+        }
         return (
             <div id='recipe'>
                 <Nav />
@@ -78,16 +80,20 @@ export default class Recipe extends Component {
                   <a id='backToResults' href='/results'>Back to results</a>
                   <button id='recipeAddToFavorites' value='Add to Favorites' onClick={this.addToFav}>{this.state.favorites}</button>
                 </div>
-                <h2 id='recipeH2'>{array.title}</h2>
-                <img id='recipeImg' src={array.image} alt='recipe'/>
+                <h2 id='recipeH2'>{recipeArray.title}</h2>
+                <img id='recipeImg' src={recipeArray.image} alt='recipe'/>
                 <h4>Ingredients:</h4>
-                <ul>
-                    {array.extendedIngredients.map(item => (
-                            <li>{item.measures.us.amount} {item.measures.us.unitShort} {item.name}</li>
+                <ul id='recipeIngredients'>
+                    {recipeArray.extendedIngredients.map(item => (
+                            <li key={item.id}>{item.measures.us.amount} {item.measures.us.unitShort} {item.name}</li>
                     ))}
-                </ul>
-                <p id='recipeInstructions'>{array.instructions}</p>
-                <p><a id='recipeSource' href={array.sourceUrl}>Source</a></p>
+                </ul>          
+                <ol id='recipeInstructions'>
+                  {recipeArray.analyzedInstructions[0].steps.map(item => (
+                      <li key={item.number}> {item.step}</li>
+                  ))}
+                </ol>
+                <p><a id='recipeSource' target='_blank' rel="noopener noreferrer" href={recipeArray.sourceUrl}>Source</a></p>
             </div>
         )
     }

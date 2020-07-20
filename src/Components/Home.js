@@ -13,14 +13,13 @@ export default class home extends Component {
     handleChange(event) {
         this.setState({value: event.target.value});
     }
+    //on submit save the search query to make a request on the results page
     handleSubmit(event) {
         localStorage.clear();
         localStorage.setItem('search', this.state.value);
-        let search = localStorage.getItem('search');
         this.setState({searched: true});
         event.preventDefault();
     }
-
     render() {
         if (this.state.searched === true) {
             return <Redirect to='/results' />

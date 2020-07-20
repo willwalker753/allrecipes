@@ -4,7 +4,7 @@ import './Nav.css'
 export default function nav() {
     let loggedIn = sessionStorage.getItem('loggedIn');
     let username = sessionStorage.getItem('username');
-    
+    //two different nav bars depending on if the user is logged in
     if(loggedIn){
         return (
             <nav id='navBox'>

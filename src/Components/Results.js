@@ -3,8 +3,7 @@ import Nav from './Nav';
 import './Results.css';
 
 const apiKey = '01673e987d334c68ba50b7b73c675d42';
-let count = 0;
-let array = [];
+let recipeArray = [];
 export default class Results extends Component {
     constructor(props) {
         super(props);
@@ -13,13 +12,9 @@ export default class Results extends Component {
           isLoaded: false,
           items: []
         };
-    } 
-    renderImage(){
-      let imgUrl = `<img src='https://spoonacular.com/recipeImages/${this.state.items[count].image}-312x150.jpg' />`;
-      count++;
-      return (imgUrl)
     }
     componentDidMount() {
+      //use the search term to make a get request to the api
       let search = localStorage.getItem('search');
       let url = 'https://api.spoonacular.com/recipes/search?apiKey=' + apiKey + '&query=' + search;
       fetch(url)
@@ -47,20 +42,21 @@ export default class Results extends Component {
         } else if (!isLoaded) {
           return <div>Loading...</div>;
         } else {
-            array = this.state.items;
-            if(array.length === 0){
+          recipeArray = this.state.items;
+            if(recipeArray.length === 0){
               return <p>Your search did not return any results...<a href='/'>Back to home?</a></p>           
             }
-            for(let i=0;i<array.length;i++){
-                array[i].image = 'https://spoonacular.com/recipeImages/'+array[i].id+'-312x150.jpg';
-                array[i].sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+array[i].id;
+            //makes a valid image url and a url for each recipe
+            for(let i=0;i<recipeArray.length;i++){
+              recipeArray[i].image = 'https://spoonacular.com/recipeImages/'+recipeArray[i].id+'-312x150.jpg';
+              recipeArray[i].sourceUrl = 'http://localhost:3000/recipe/'+recipeArray[i].id;
             }
           return (
             <div>
               <Nav />
               <div id='resultsSpace'></div>
               <div id='resultsFlexBox'>
-              {array.map(item => (
+              {recipeArray.map(item => (
                 <a className='resultsBoxLink' href={item.sourceUrl}>
                   <div className='resultsBox' key={item.id}>
                       <p id='resultsTitle'>{item.title}</p>
