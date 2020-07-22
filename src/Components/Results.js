@@ -49,7 +49,7 @@ export default class Results extends Component {
             //makes a valid image url and a url for each recipe
             for(let i=0;i<recipeArray.length;i++){
               recipeArray[i].image = 'https://spoonacular.com/recipeImages/'+recipeArray[i].id+'-312x150.jpg';
-              recipeArray[i].sourceUrl = 'http://localhost:3000/recipe/'+recipeArray[i].id;
+              recipeArray[i].sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+recipeArray[i].id;
             }
           return (
             <div>

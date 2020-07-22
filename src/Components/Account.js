@@ -19,7 +19,7 @@ export default class Account extends Component {
     }
     logOut() {
         window.sessionStorage.clear();
-        window.location.replace('http://localhost:3000/');
+        window.location.replace('https://allrecipes-git-master.willwalker753.vercel.app/');
     }
     //gets the url params ready
     makeIdArray() {
@@ -67,7 +67,7 @@ export default class Account extends Component {
             .then(response => {         
                 recipeArray = response.data;
                 recipeArray.map(item => {
-                    item.sourceUrl = 'http://localhost:3000/recipe/'+item.id;
+                    item.sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+item.id;
                 })
                 return recipeArray;
             },
