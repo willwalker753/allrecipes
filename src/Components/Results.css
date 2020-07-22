@@ -11,6 +11,9 @@
     border-radius: 8px;
     margin-bottom: 20px;
 }
+.resultsBox:hover {
+    background-color: rgba(168, 83, 2, 0.794);
+}
 #resultsTitle { 
     text-align: center;
     padding-top:10px;
@@ -38,6 +41,21 @@
 #resultsImg {
     width: 100%;
     margin-top: 10px;
+}
+#loadingSpinner {
+    color: white;
+    font-size: 50px;
+    animation: spin 6s linear infinite;
+    margin-left: 45%;
+    margin-top: 180px;
+}
+@keyframes spin {
+	0% {
+		transform: rotateZ(0);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
 }
 
 @media only screen and (min-width: 700px) {

@@ -32,7 +32,7 @@ export default class Results extends Component {
               error
             });
           }
-        )
+        );
       }
 
       render() {
@@ -40,7 +40,7 @@ export default class Results extends Component {
         if (error) {
           return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
-          return <div>Loading...</div>;
+          return <i id='loadingSpinner' className="fa fa-spinner" aria-hidden="true"></i>;
         } else {
           recipeArray = this.state.items;
             if(recipeArray.length === 0){
@@ -49,7 +49,7 @@ export default class Results extends Component {
             //makes a valid image url and a url for each recipe
             for(let i=0;i<recipeArray.length;i++){
               recipeArray[i].image = 'https://spoonacular.com/recipeImages/'+recipeArray[i].id+'-312x150.jpg';
-              recipeArray[i].sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+recipeArray[i].id;
+              recipeArray[i].sourceUrl = 'http://localhost:3000/recipe/'+recipeArray[i].id;
             }
           return (
             <div>
@@ -57,8 +57,8 @@ export default class Results extends Component {
               <div id='resultsSpace'></div>
               <div id='resultsFlexBox'>
               {recipeArray.map(item => (
-                <a className='resultsBoxLink' href={item.sourceUrl}>
-                  <div className='resultsBox' key={item.id}>
+                <a key={item.id} className='resultsBoxLink' href={item.sourceUrl}>
+                  <div className='resultsBox' >
                       <p id='resultsTitle'>{item.title}</p>
                       <img id='resultsImg' src={item.image} alt='recipe'/>
                       <p id='resultsP'>Ready in {item.readyInMinutes} minutes and serves {item.servings} people</p>

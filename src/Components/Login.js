@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import './Login.css'
-import axios from 'axios'
+import './Login.css';
+import axios from 'axios';
 
 class Login extends Component {
     constructor(props) {
@@ -10,35 +10,40 @@ class Login extends Component {
              username: '',
              password: '',
              redirect: false,
-             errorMessage: ''
+             errorMessage: '',
+             buttonMessage: 'Login'
         }
     }
     changeHandler = e => {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({ [e.target.name]: e.target.value });
     }
     //if the submitted username and password returns a match from the database server then sign in
     submitHandler = e => {
-        e.preventDefault()
-        console.log(this.state);
+        this.setState({
+            errorMessage: '',
+            buttonMessage: 'Loading...'
+        });
+        e.preventDefault();
         axios.post('https://allrecipes-api.herokuapp.com/login',this.state)
             .then(response => {
-                console.log(response)
                 if((response.status === 200)&&(response.data[0].username !== undefined)) {                   
-                    window.sessionStorage.clear()
-                    window.sessionStorage.setItem('loggedIn', true)
-                    window.sessionStorage.setItem('username', response.data[0].username)
-                    window.sessionStorage.setItem('userID', response.data[0]._id)
-                    this.setState({ redirect: true })
+                    window.sessionStorage.clear();
+                    window.sessionStorage.setItem('loggedIn', true);
+                    window.sessionStorage.setItem('username', response.data[0].username);
+                    window.sessionStorage.setItem('userID', response.data[0]._id);
+                    this.setState({ redirect: true });
                 }
                 else {
                     this.setState({
-                        errorMessage: 'Incorrect username or password'
+                        errorMessage: 'Incorrect username or password',
+                        buttonMessage: 'Login'
                     });
                 }
             })
             .catch(error => {
                 this.setState({
-                    errorMessage: 'Incorrect username or password'
+                    errorMessage: 'Incorrect username or password',
+                    buttonMessage: 'Login'
                 });
             });
     }
@@ -58,7 +63,7 @@ class Login extends Component {
                 <form id='loginForm' onSubmit={this.submitHandler}>
                     <input type="text" placeholder="Username" name='username' value={username} onChange={this.changeHandler}/>
                     <input type="password" placeholder="Password" name='password' value={password} onChange={this.changeHandler}/>
-                    <input type="submit" id='submitLogin' value="Login"/>
+                    <input type="submit" id='submitLogin' value={this.state.buttonMessage}/>
                 </form>
                 <p id='errorMessage'>{this.state.errorMessage}</p>
                 <section>

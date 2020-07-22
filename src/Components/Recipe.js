@@ -22,11 +22,13 @@ export default class Recipe extends Component {
     addToFav() {
       let userId = window.sessionStorage.getItem('userID');
       if(userId === null){
-        alert('You must be signed in to add to favorites');
+        this.setState({
+          favorites: 'Please login to add'
+        });
       }
       else {
         let recipeId = window.location.href;
-        recipeId = recipeId.replace('https://allrecipes-git-master.willwalker753.vercel.app/recipe/','');
+        recipeId = recipeId.replace('http://localhost:3000/recipe/','');
         let json = {
           'userId': userId,
           'recipeId': recipeId
@@ -43,7 +45,7 @@ export default class Recipe extends Component {
     //get the selected recipe's information from the api
     componentDidMount() {
         let recipeId = window.location.href;
-        recipeId = recipeId.replace('https://allrecipes-git-master.willwalker753.vercel.app/recipe/','');
+        recipeId = recipeId.replace('http://localhost:3000/recipe/','');
         let url = 'https://api.spoonacular.com/recipes/'+recipeId+'/information?apiKey='+apiKey;
         fetch(url)
           .then(res => res.json())
@@ -68,7 +70,7 @@ export default class Recipe extends Component {
           return <div>Error: {error.message}</div>;
         } 
         else if (!isLoaded) {
-          return <div>Loading...</div>;
+          return <i id='loadingSpinner' className="fa fa-spinner" aria-hidden="true"></i>;
         } 
         else {
           recipeArray = this.state.items;

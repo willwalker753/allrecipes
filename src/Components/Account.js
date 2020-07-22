@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Nav from './Nav';
 import axios from 'axios';
-import './Account.css'
+import './Account.css';
 
 let recipeNumArray = [];
 let recipeArray = [];
@@ -19,7 +19,7 @@ export default class Account extends Component {
     }
     logOut() {
         window.sessionStorage.clear();
-        window.location.replace('https://allrecipes-git-master.willwalker753.vercel.app/');
+        window.location.replace('http://localhost:3000/');
     }
     //gets the url params ready
     makeIdArray() {
@@ -67,7 +67,7 @@ export default class Account extends Component {
             .then(response => {         
                 recipeArray = response.data;
                 recipeArray.map(item => {
-                    item.sourceUrl = 'https://allrecipes-git-master.willwalker753.vercel.app/recipe/'+item.id;
+                    item.sourceUrl = 'http://localhost:3000/recipe/'+item.id;
                 })
                 return recipeArray;
             },
@@ -113,8 +113,8 @@ export default class Account extends Component {
             this.setState({
                 hasFav: ''
             });      
-            this.makeIdArray()
-            this.getRecipeInfo()
+            this.makeIdArray();
+            this.getRecipeInfo();
         }
     }
 
@@ -124,7 +124,7 @@ export default class Account extends Component {
             return <div>Error: {error.message}</div>;
         } 
         else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <i id='loadingSpinner' className="fa fa-spinner" aria-hidden="true"></i>;
         } 
         else if (hasFav !== '') {
             return (

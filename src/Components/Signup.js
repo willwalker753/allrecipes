@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import './Signup.css'
-import axios from 'axios'
+import './Signup.css';
+import axios from 'axios';
 
 class Signup extends Component {
     constructor(props) {
@@ -10,19 +10,25 @@ class Signup extends Component {
              username: '',
              password: '',
              redirect: false,
-             errorMessage: ''
+             errorMessage: '',
+             buttonMessage: 'Sign Up'
         }
     }  
     changeHandler = e => {
-        this.setState({ [e.target.name]: e.target.value })
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     //if the user submits a username and password it is posted to the database server and the user is logged in
     submitHandler = e => {
-        e.preventDefault()
+        this.setState({ 
+            buttonMessage: 'Loading...',
+            errorMessage: ''
+        });
+        e.preventDefault();
         if((this.state.username === '')||(this.state.password === '')) {
             this.setState({
-                errorMessage: 'Please enter a username and password'
+                errorMessage: 'Please enter a username and password',
+                buttonMessage: 'Sign Up'
             })
         }
         else{
@@ -56,7 +62,7 @@ class Signup extends Component {
                 <form id='signUpForm' onSubmit={this.submitHandler}>
                     <input type="text" placeholder="Username" name='username' value={username} onChange={this.changeHandler}/>
                     <input type="password" placeholder="Password" name='password' value={password} onChange={this.changeHandler}/>
-                    <input type="submit" id='submitSignUp' value="Sign Up"/>
+                    <input type="submit" id='submitSignUp' value={this.state.buttonMessage}/>
                 </form>
                 <p id='errorMessage'>{this.state.errorMessage}</p>
                 <section>

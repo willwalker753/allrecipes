@@ -22,7 +22,7 @@ export default class home extends Component {
     }
     render() {
         if (this.state.searched === true) {
-            return <Redirect to='/results' />
+            return <Redirect to='/results' />;
         }
         return (
             <div>

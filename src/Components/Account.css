@@ -10,8 +10,12 @@
     margin-right: auto;
     margin-left: auto;
 }
+.accountFavorites:hover {
+    background-color: rgba(168, 83, 2, 0.794);
+}
 #accountHasFav {
     color: white;
+    text-align: center;
 }
 .accountFavorites > a > h4 {
     padding-left:30px;

@@ -1,5 +1,5 @@
-import React from 'react'
-import './Nav.css'
+import React from 'react';
+import './Nav.css';
 
 export default function nav() {
     let loggedIn = sessionStorage.getItem('loggedIn');
