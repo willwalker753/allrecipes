@@ -38,6 +38,8 @@ over 360,000 recipes. The backend API repo can be found <a href='https://github.
 <li>Node.js</li>
 <li>Express.js</li>
 <li>MongoDB</li>
+<li>Jest</li>
+<li>Mocha</li>
 <li>Git</li>
 <li>Heroku</li>
 <li>Vercel</li>
