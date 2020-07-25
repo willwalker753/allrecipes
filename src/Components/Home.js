@@ -31,7 +31,7 @@ export default class home extends Component {
                     <header>
                         <h2>Search for recipes from apple pie to zucchini bread!</h2>
                     </header>
-                    <form onSubmit={this.handleSubmit}>
+                    <form id='homeForm' onSubmit={this.handleSubmit}>
                         <input id='searchBar' type="text" placeholder='apple pie' value={this.state.value} onChange={this.handleChange} />
                         <button id='searchBarButton' type="submit" value="Search"><i className="fas fa-search"></i></button>
                     </form>

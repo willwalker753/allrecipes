@@ -32,9 +32,14 @@
     color: rgb(167, 167, 167);
     font-style: italic;
 }
+#homeForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #searchBarButton {
-    height: 33px;
-    width: 40px;
+    height: 34px;
+    width: 38px;
     border-width: 1px;
     border-color: black;
     border-left: none;
